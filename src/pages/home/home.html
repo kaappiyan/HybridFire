@@ -1,17 +1,52 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
+<ion-header no-border>
+  <ion-navbar color="secondary">
+    
+        <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon></button>
+<ion-title>menuone</ion-title>
   </ion-navbar>
 </ion-header>
+ 
+<ion-content has-header="true">
+    
+    
+ 
+    <ion-card *ngFor="let card of cards">
+ 
+      <ion-item>
+        <ion-avatar item-left>
+          <img src="https://avatars.io/facebook/joshua.morony" />
+        </ion-avatar>
+        <h2>Josh Morony</h2>
+        <p>November 5, 1955</p>
+      </ion-item>
+ 
+      <img src="http://placehold.it/500x200" />
+ 
+      <ion-card-content>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+      </ion-card-content>
+ 
+      <ion-row>
+        <ion-col>
+          <button ion-button icon-left clear small>
+            <ion-icon name="thumbs-up"></ion-icon>
+            <div>12 Likes</div>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-left clear small>
+            <ion-icon name="text"></ion-icon>
+            <div>4 Comments</div>
+          </button>
+        </ion-col>
+        <ion-col center text-center>
+          <ion-note>
+            11h ago
+          </ion-note>
+        </ion-col>
+      </ion-row>
+ 
+    </ion-card>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
 </ion-content>
