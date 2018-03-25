@@ -1,23 +1,34 @@
-import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Component,ViewChild } from '@angular/core';
+import { Platform,NavController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { AuthData } from '../providers/auth/auth';
 
-import { TabsPage } from '../pages/tabs/tabs';
 import { HomePage } from '../pages/home/home';
+
+
 import firebase from 'firebase';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
+
+  
+  @ViewChild('mycontent') navCtrl: NavController;
   rootPage:any ;
   public splashScreen: SplashScreen;
 
-  constructor(platform: Platform, statusBar: StatusBar ) {
+ 
+
+  constructor(platform: Platform, 
+    statusBar: StatusBar,
+    public authProvider: AuthData ) {
     platform.ready().then(() => {
-      this.hideSplashScreen();
+    
+      
     });
+
     firebase.initializeApp({
       apiKey: "AIzaSyDnAJC_pSBqSpOrQ7erLu4mIUCGlB_E9Po",
       authDomain: "b2chybrid.firebaseapp.com",
@@ -25,6 +36,9 @@ export class MyApp {
       storageBucket: "b2chybrid.appspot.com",
       messagingSenderId: "620814455025"     
     });
+
+   
+
     const unsubscribe = firebase.auth().onAuthStateChanged( user => {
       if (!user) {
         this.rootPage = 'LoginPage';
@@ -35,6 +49,8 @@ export class MyApp {
       }
     });
  
+
+    
         
   }
 
@@ -45,5 +61,20 @@ export class MyApp {
       }, 100);
      }
 
+    }
+    openHomePage(){
+      this.rootPage = HomePage; 
+    }
+    openConfessionPage() {
+      // Reset the content nav to have just this page
+      // we wouldn't want the back button to show in this scenario
+       this.rootPage = 'ConfessionPage'; 
+    }
+
+    logout(){
+      
+      this.authProvider.logoutUser();
+      this.rootPage = 'LoginPage';
+	    
     }
 }

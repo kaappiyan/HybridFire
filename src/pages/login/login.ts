@@ -8,6 +8,7 @@ import { EmailValidator } from '../../validators/email';
 import { AuthData } from '../../providers/auth/auth';
 import { HomePage } from '../home/home';
 
+import { Storage } from '@ionic/storage';
 /**
  * Generated class for the LoginPage page.
  *
@@ -27,7 +28,8 @@ export class LoginPage {
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController, 
     public authProvider: AuthData, 
-    public formBuilder: FormBuilder) {
+    public formBuilder: FormBuilder,
+    public storage: Storage) {
       this.loginForm = formBuilder.group({
         email: ['', 
         Validators.compose([Validators.required, EmailValidator.isValid])],
@@ -36,11 +38,15 @@ export class LoginPage {
       });
   }
 
+
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
 
   loginUser(): void {
+    this.storage.set('name',this.loginForm.value.email)
+    
     if (!this.loginForm.valid){
       console.log(this.loginForm.value);
     } else {
@@ -75,6 +81,8 @@ export class LoginPage {
   }
   
   goToResetPassword(): void { 
+
+  
     this.navCtrl.push('ResetPasswordPage'); 
   }
 

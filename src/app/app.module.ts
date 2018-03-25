@@ -12,6 +12,21 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthData } from '../providers/auth/auth';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+
+import { IonicStorageModule } from '@ionic/storage';
+import { Camera } from 'ionic-native';
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyDnAJC_pSBqSpOrQ7erLu4mIUCGlB_E9Po",
+      authDomain: "b2chybrid.firebaseapp.com",
+      databaseURL: "https://b2chybrid.firebaseio.com",      
+      storageBucket: "b2chybrid.appspot.com",
+      messagingSenderId: "620814455025"  
+};
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -22,7 +37,10 @@ import { AuthData } from '../providers/auth/auth';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -36,7 +54,8 @@ import { AuthData } from '../providers/auth/auth';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthData
+    AuthData,
+    Camera
   ]
 })
 export class AppModule {}

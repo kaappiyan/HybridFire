@@ -23,7 +23,7 @@ $app-direction: ltr;
 // http://ionicframework.com/docs/theming/overriding-ionic-variables/
 
 
-$background-color: #3c353c;
+$background-color: #22313F;
 
 // Named Color Variables
 // --------------------------------------------------
@@ -38,9 +38,20 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  astral:  #336E7B,
+ bucky: #22313F,
+ shadygreen :#90C695,
+gossip: #1E824C
 );
 
+$toolbar-md-title-text-color: #22313F;
+$toolbar-ios-title-text-color: #22313F;
+$toolbar-wp-title-text-color: #22313F;
+
+$menu-ios-background: #f53d3d;
+$menu-md-background: #f53d3d;
+$menu-wp-background: #f53d3d;
 
 // App iOS Variables
 // --------------------------------------------------
