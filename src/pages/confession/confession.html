@@ -1,0 +1,35 @@
+<!--
+  Generated template for the ConfessionPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  
+  <ion-navbar >
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon></button>
+    <ion-title>confession</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+   
+        
+        <ion-card text-wrap *ngFor="let confession of (confessionList | async)" class="ion-card">
+            <ion-item color="astral">
+          <h2>{{confession.name}}</h2>
+        </ion-item>
+        </ion-card>
+     
+
+    
+      <ion-fab bottom right edge>
+          <button ion-fab mini (click)="openPostPage()"><ion-icon name="add" ></ion-icon></button>
+          
+        </ion-fab>
+
+</ion-content>
